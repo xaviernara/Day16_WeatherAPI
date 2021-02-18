@@ -8,7 +8,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 
 object RetrofitInstance {
 
-    private const val BASE_URL = "https://api.openweathermap.org/data/2.5/weather"
+    private const val BASE_URL = "https://api.openweathermap.org/data/2.5/"
 
     private val client = HttpLoggingInterceptor()
         .apply {

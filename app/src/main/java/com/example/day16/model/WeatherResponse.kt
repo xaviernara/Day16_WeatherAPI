@@ -1,5 +1,8 @@
 package com.example.day16.model
 
+import com.squareup.moshi.JsonClass
+
+@JsonClass(generateAdapter = true)
 data class WeatherResponse(
     val base: String, // stations
     val clouds: Clouds,

@@ -34,9 +34,9 @@ interface WeatherService {
 
      */
 
-    @GET("q")
-    @Headers("appid: f603765881641623338f7722bbe26d40")
-    suspend fun getWeather(@Query("city_name") cityName: String): List<WeatherResponse>
+    @GET("weather/")
+    //@Headers("user-key: f603765881641623338f7722bbe26d40")
+    suspend fun getWeatherService(@Query("q") cityName: String, @Query("appid")apiId:String): WeatherResponse
 
 
 }

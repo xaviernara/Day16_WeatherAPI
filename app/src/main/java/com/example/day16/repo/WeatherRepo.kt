@@ -7,7 +7,7 @@ object WeatherRepo {
 
     val weatherService = RetrofitInstance.weatherService
 
-    suspend fun getWeather(cityName :String) :List<WeatherResponse>{
-        return RetrofitInstance.weatherService.getWeather(cityName)
+    suspend fun getWeatherRepo(cityName :String) :WeatherResponse{
+        return RetrofitInstance.weatherService.getWeatherService(cityName,"f603765881641623338f7722bbe26d40" )
     }
 }
