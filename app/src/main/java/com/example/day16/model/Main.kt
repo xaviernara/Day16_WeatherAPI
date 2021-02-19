@@ -1,8 +1,10 @@
 package com.example.day16.model
 
+import androidx.room.Entity
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
+@Entity
 @JsonClass(generateAdapter = true)
 data class Main(
     @field:Json(name = "feels_like")
