@@ -1,10 +1,8 @@
 package com.example.day16.viewmodel
 
+import android.app.Application
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.example.day16.model.WeatherResponse
 import com.example.day16.repo.WeatherRepo
 import kotlinx.coroutines.Dispatchers
@@ -13,7 +11,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MainViewModel : ViewModel() {
+class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     private val _weatherResponse = MutableLiveData <WeatherResponse>()
 
@@ -64,6 +62,27 @@ class MainViewModel : ViewModel() {
             _weatherResponse.postValue(weather.copy())
         }
     }
+
+    fun getWeather2(cityName : String){
+
+        /*
+        CoroutineScope tied to this ViewModel. This scope will be
+        canceled when ViewModel will be cleared, i.e ViewModel.onCleared is called
+
+        Launches a new coroutine without blocking the current thread and returns a reference to the coroutine as a Job.
+        The coroutine is cancelled when the resulting job is cancelled.
+        */
+
+        viewModelScope.launch(Dispatchers.IO) {
+            val weather = WeatherRepo.getWeatherRepo(cityName)
+            _weatherResponse.postValue(weather.copy())
+            Log.d("Inside getWeather2", "getWeather2: $_weatherResponse")
+
+        }
+    }
+
+
+
 
 
 
