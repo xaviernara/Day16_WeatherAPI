@@ -19,7 +19,7 @@ class WeatherAdaptor (val weatherResponseList: List<WeatherResponse>):
      *
      * This new ViewHolder should be constructed with a new View that can represent the items
      * of the given type. You can either create a new View manually or inflate it from an XML
-     * layout file.
+     * layout file
      *
      *
      * The new ViewHolder will be used to display items of the adapter using
@@ -78,6 +78,7 @@ class WeatherAdaptor (val weatherResponseList: List<WeatherResponse>):
             weatherResponseList[position].main.temp,
             weatherResponseList[position].main.feels_like
             )
+
     }
 
     class WeatherViewHolder (private val binding: WeatherRecyclerBinding) : RecyclerView.ViewHolder(binding.root) {
