@@ -63,22 +63,22 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-    fun getWeather2(cityName : String){
+   /* fun getWeather2(cityName : String){
 
-        /*
+        *//*
         CoroutineScope tied to this ViewModel. This scope will be
         canceled when ViewModel will be cleared, i.e ViewModel.onCleared is called
 
         Launches a new coroutine without blocking the current thread and returns a reference to the coroutine as a Job.
         The coroutine is cancelled when the resulting job is cancelled.
-        */
+        *//*
 
         viewModelScope.launch(Dispatchers.IO) {
             val weather = WeatherRepo.getWeatherRepo(cityName)
             _weatherResponse.postValue(weather.copy())
             Log.d("Inside getWeather2", "getWeather2: $_weatherResponse")
 
-        }
+        }*/
     }
 
 
@@ -88,4 +88,3 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
 
 
-}

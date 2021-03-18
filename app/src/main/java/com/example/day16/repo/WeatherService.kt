@@ -34,8 +34,9 @@ interface WeatherService {
 
      */
 
-    @GET("weather/")
+    //@GET("weather/")
     //@Headers("user-key: f603765881641623338f7722bbe26d40")
+    @GET("forcasts/")
     suspend fun getWeatherService(@Query("q") cityName: String, @Query("appid")apiId:String): WeatherResponse
 
 

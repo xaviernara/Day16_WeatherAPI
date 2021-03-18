@@ -2,25 +2,26 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:background="@android:color/holo_orange_light"
     >
 
     <TextView
-        android:id="@+id/cityNameText"
+        android:id="@+id/forecastText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_gravity="start"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/tempText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="TextView" />
 
-    <TextView
-        android:id="@+id/long_lat_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="TextView" />
-
-    <TextView
+    <!--<TextView
         android:id="@+id/weatherText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -73,6 +74,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="TextView" />
+        android:text="TextView" />-->
 
 </LinearLayout>

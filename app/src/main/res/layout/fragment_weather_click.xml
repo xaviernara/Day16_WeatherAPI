@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.weatherClickFragment"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_weight="1"
+        android:id="@+id/tempText"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textSize="@android:dimen/app_icon_size"
+        android:gravity="center"
+        android:text="72" />
+    <TextView
+        android:layout_weight="1"
+        android:id="@+id/feelLikeText"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="end"
+        android:textSize="@android:dimen/app_icon_size"
+        android:text="Feels Like" />
+    <TextView
+        android:layout_weight="1"
+        android:id="@id/forecastText"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textSize="@android:dimen/app_icon_size"
+        android:text="Cloudy" />
+    <TextView
+        android:layout_weight="1"
+        android:id="@+id/forecast2Text"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/hello_blank_fragment" />
+
+</LinearLayout>

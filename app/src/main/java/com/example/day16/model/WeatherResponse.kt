@@ -15,51 +15,52 @@ data class WeatherResponse @JvmOverloads constructor (
 
 
 
-    @ColumnInfo(name = "base")
-    @Ignore
+    //@ColumnInfo(name = "base")
+    //@Ignore
     val base: String, // stations
 
     //@ColumnInfo(name ="clouds")
-    @Ignore
+    //@Ignore
     val clouds: Clouds,
 
     //@ColumnInfo(name ="cod")
     val cod: Int, // 200
 
-    @ColumnInfo(name ="coord")
+    //@ColumnInfo(name ="coord")
     val coord: Coord,//0
 
-    @ColumnInfo(name ="dt")
+    //@ColumnInfo(name ="dt")
     val dt: Int, // 1613580189
 
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "id")
+   // @PrimaryKey(autoGenerate = true)
+    //@ColumnInfo(name = "id")
     val id: Int, // 4920607
 
     //@ColumnInfo(name ="main")
-    @Ignore
+    //@Ignore
     val main: Main,
 
     @ColumnInfo(name ="name")
     val name: String, // Gary
 
     //@ColumnInfo(name ="sys")
-    @Ignore
+    //@Ignore
     val sys: Sys,
 
-    @ColumnInfo(name ="timezone")
+    //@ColumnInfo(name ="timezone")
     val timezone: Int, // -21600
 
-    @ColumnInfo(name ="visibility")
+   // @ColumnInfo(name ="visibility")
     val visibility: Int, // 10000
 
     //@ColumnInfo(name ="weather")
-    @Ignore
+    //@Ignore
     val weather: List<Weather>,
 
     //@ColumnInfo(name ="wind")
-    @Ignore
-    val wind: Wind
+    val wind: Wind,
+
+    val rain : Rain
 
 
     /*@Ignore val current : WeatherResponse = WeatherResponse(
