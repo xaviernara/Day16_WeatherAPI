@@ -2,12 +2,24 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "e233ff88d85a5bc1c557f7605292291a",
+    "identityHash": "a89388aba6d986939b2629ab4cd20c1d",
     "entities": [
       {
         "tableName": "WEATHER_TABLE",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`cod` INTEGER NOT NULL, `coord` TEXT NOT NULL, `dt` INTEGER NOT NULL, `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `timezone` INTEGER NOT NULL, `visibility` INTEGER NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`base` TEXT NOT NULL, `clouds` TEXT NOT NULL, `cod` INTEGER NOT NULL, `coord` TEXT NOT NULL, `dt` INTEGER NOT NULL, `id` INTEGER NOT NULL, `main` TEXT NOT NULL, `name` TEXT NOT NULL, `sys` TEXT NOT NULL, `timezone` INTEGER NOT NULL, `visibility` INTEGER NOT NULL, `weather` TEXT NOT NULL, `wind` TEXT NOT NULL, `rain` TEXT NOT NULL)",
         "fields": [
+          {
+            "fieldPath": "base",
+            "columnName": "base",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "clouds",
+            "columnName": "clouds",
+            "affinity": "TEXT",
+            "notNull": true
+          },
           {
             "fieldPath": "cod",
             "columnName": "cod",
@@ -33,8 +45,20 @@
             "notNull": true
           },
           {
+            "fieldPath": "main",
+            "columnName": "main",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
             "fieldPath": "name",
             "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sys",
+            "columnName": "sys",
             "affinity": "TEXT",
             "notNull": true
           },
@@ -49,13 +73,29 @@
             "columnName": "visibility",
             "affinity": "INTEGER",
             "notNull": true
+          },
+          {
+            "fieldPath": "weather",
+            "columnName": "weather",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "wind",
+            "columnName": "wind",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "rain",
+            "columnName": "rain",
+            "affinity": "TEXT",
+            "notNull": true
           }
         ],
         "primaryKey": {
-          "columnNames": [
-            "id"
-          ],
-          "autoGenerate": true
+          "columnNames": [],
+          "autoGenerate": false
         },
         "indices": [],
         "foreignKeys": []
@@ -64,7 +104,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'e233ff88d85a5bc1c557f7605292291a')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'a89388aba6d986939b2629ab4cd20c1d')"
     ]
   }
 }

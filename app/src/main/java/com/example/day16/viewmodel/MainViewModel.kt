@@ -63,6 +63,12 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
+    fun insertWeatherResponse(weatherResponse: WeatherResponse){
+        viewModelScope.launch(Dispatchers.IO) {
+
+        }
+    }
+
    /* fun getWeather2(cityName : String){
 
         *//*

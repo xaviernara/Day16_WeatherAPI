@@ -1,7 +1,9 @@
 package com.example.day16.model
 
+import android.os.Parcelable
 import androidx.room.*
 import com.squareup.moshi.JsonClass
+import kotlinx.android.parcel.Parcelize
 
 @JsonClass(generateAdapter = true)
 
@@ -9,12 +11,9 @@ import com.squareup.moshi.JsonClass
     tableName = "WEATHER_TABLE"
     //,indices = [Index(value = [])]
 )
-data class WeatherResponse @JvmOverloads constructor (
 
-
-
-
-
+@Parcelize
+data class WeatherResponse (
     //@ColumnInfo(name = "base")
     //@Ignore
     val base: String, // stations
@@ -67,12 +66,4 @@ data class WeatherResponse @JvmOverloads constructor (
     "","",0,"",0,0,"","",""
     ,0,0,"","")*/
 
-
-
-
-
-
-
-
-
-)
+):Parcelable

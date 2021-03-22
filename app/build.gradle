@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'kotlin-android-extensions'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
@@ -49,6 +50,16 @@ android {
         jvmTarget = '1.8'
     }
 }
+
+
+sourceSets {
+    main {
+        java {
+            srcDirs += 'build/generated/source/navigation-args'
+        }
+    }
+}
+
 
 dependencies {
 

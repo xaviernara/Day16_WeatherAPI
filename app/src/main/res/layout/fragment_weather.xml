@@ -8,6 +8,12 @@
     tools:context=".view.WeatherFragment">
 
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/weatherRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/weather_recycler"
+        />
 
     <!--<androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
@@ -23,7 +29,7 @@
         android:layout_above="@+id/weatherRecycler"
         android:text="TextView" />-->
 
-    <TextView
+  <!--  <TextView
         android:id="@+id/cityNameText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -91,7 +97,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="TextView" />
-
+-->
 
 
 </LinearLayout>

@@ -7,7 +7,7 @@ import com.example.day16.databinding.FragmentWeatherBinding
 import com.example.day16.databinding.WeatherRecyclerBinding
 import com.example.day16.model.WeatherResponse
 
-class WeatherAdaptor (val weatherResponseList: List<WeatherResponse>):
+class WeatherAdaptor (private val weatherResponseList: List<WeatherResponse>, private val weatherClickListener: WeatherClickListener):
     RecyclerView.Adapter<WeatherAdaptor.WeatherViewHolder>() {
 
     lateinit var binding: WeatherRecyclerBinding
@@ -37,7 +37,7 @@ class WeatherAdaptor (val weatherResponseList: List<WeatherResponse>):
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeatherAdaptor.WeatherViewHolder {
         binding = WeatherRecyclerBinding.inflate(LayoutInflater.from(parent.context))
-        return WeatherViewHolder(binding)
+        return WeatherViewHolder(binding,weatherClickListener)
     }
 
     /**
@@ -71,19 +71,28 @@ class WeatherAdaptor (val weatherResponseList: List<WeatherResponse>):
      * @param position The position of the item within the adapter's data set.
      */
     override fun onBindViewHolder(holder: WeatherAdaptor.WeatherViewHolder, position: Int) {
-        holder.setTextViews2(weatherResponseList[position].name,
+        /*holder.setTextViews2(weatherResponseList[position].name,
             weatherResponseList[position].coord.lat+weatherResponseList[position].coord.lon,
             weatherResponseList[position].weather[position].main,
             weatherResponseList[position].weather[position].description,
             weatherResponseList[position].main.temp,
             weatherResponseList[position].main.feels_like
-            )
+            )*/
+
+        holder.setTextViews(weatherResponseList[position],position)
+        holder.initOnClicks(weatherResponseList[position])
 
     }
 
-    class WeatherViewHolder (private val binding: WeatherRecyclerBinding) : RecyclerView.ViewHolder(binding.root) {
+    class WeatherViewHolder (private val binding: WeatherRecyclerBinding,private val weatherClickListener: WeatherClickListener) : RecyclerView.ViewHolder(binding.root) {
 
-        fun setTextViews(cityName: String,long_lat: Double, weather :String,weatherDesc : String, temp : Double, feelLike: Double,
+        fun setTextViews(weatherResponse: WeatherResponse, position: Int){
+            binding.tempText.text = weatherResponse.main.temp.toString()
+            binding.forecastText.text = weatherResponse.weather[position].description
+
+        }
+
+       /* fun setTextViews(cityName: String,long_lat: Double, weather :String,weatherDesc : String, temp : Double, feelLike: Double,
                          tempMax : Double, tempMin: Double, humidity: Double, windSpeed : Double){
             binding.cityNameText.text = cityName
             binding.longLatText.text = long_lat.toString()
@@ -104,6 +113,14 @@ class WeatherAdaptor (val weatherResponseList: List<WeatherResponse>):
             binding.tempText.text= temp.toString()
             binding.feelLikeText.text = feelLike.toString()
             binding.longLatText.text = long_lat.toString()
+        }*/
+
+        fun initOnClicks(weatherResponse: WeatherResponse){
+
+            binding.root.setOnClickListener(){
+                weatherClickListener.weatherOnClickListener(weatherResponse)
+            }
+
         }
 
 

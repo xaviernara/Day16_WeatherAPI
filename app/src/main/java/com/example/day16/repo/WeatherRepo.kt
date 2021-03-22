@@ -12,8 +12,8 @@ object WeatherRepo {
     }
 
 
-    // get last timestamp, compare last timestamp to current timestamp, if greater than 10 mins fetch from server
+    /*// get last timestamp, compare last timestamp to current timestamp, if greater than 10 mins fetch from server
     suspend fun getWeatherRepo2(cityName :String) {
         return
-    }
+    }*/
 }
