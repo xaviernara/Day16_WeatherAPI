@@ -1,28 +1,37 @@
 package com.example.day16.viewmodel
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.*
 import com.example.day16.model.WeatherResponse
 import com.example.day16.repo.WeatherRepo
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import retrofit2.Call
-import retrofit2.Callback
 import retrofit2.Response
+import javax.inject.Inject
 
-class MainViewModel(application: Application) : AndroidViewModel(application) {
+@HiltViewModel
+class MainViewModel @Inject constructor(private val weatherRepo: WeatherRepo, application: Application ):AndroidViewModel(application){
 
-    private val _weatherResponse = MutableLiveData <WeatherResponse>()
-
-    val weatherResponse : LiveData<WeatherResponse>
-        get() = _weatherResponse
+    private val _weatherResponseMutableLiveData = MutableLiveData <List<WeatherResponse>>()
+    private var _weatherMutableLiveData = MutableLiveData<WeatherResponse>()
 
 
-  /*  init{
+    //used for the recyclerview adaptor
+    val weatherResponseListLiveData : LiveData<List<WeatherResponse>>
+        get() = _weatherResponseMutableLiveData
 
-        val callback : Callback<WeatherResponse> = object : Callback<WeatherResponse>{
-            *//**
+
+    //used for recyclerview onclick
+    val weatherLiveData : LiveData<WeatherResponse>
+        get() = _weatherMutableLiveData
+
+
+
+    /*  init{
+
+          val callback : Callback<WeatherResponse> = object : Callback<WeatherResponse>{
+              *//**
              * Invoked for a received HTTP response.
              *
              *
@@ -47,7 +56,15 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         viewModelScope.launch(Dispatchers.Main){WeatherRepo.getWeatherRepo("Chicago")}
     }*/
 
-    fun getWeather(cityName : String){
+
+    //val weatherLiveData = weatherRepo.weatherFlow.asLiveData(viewModelScope.coroutineContext)
+   fun getAllWeatherResponses(){
+        val weatherLiveData = weatherRepo.weatherFlow.asLiveData(viewModelScope.coroutineContext)
+        _weatherResponseMutableLiveData.postValue(weatherLiveData.value)
+    }
+
+    fun createWeatherResponse(cityName : String) {
+
 
         /*
         CoroutineScope tied to this ViewModel. This scope will be
@@ -58,14 +75,18 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         */
 
         viewModelScope.launch(Dispatchers.IO) {
-            val weather = WeatherRepo.getWeatherRepo(cityName)
-            _weatherResponse.postValue(weather.copy())
+           val weather = weatherRepo.createWeatherResponse(cityName)
+            _weatherMutableLiveData.postValue(weather.copy())
         }
+
     }
 
-    fun insertWeatherResponse(weatherResponse: WeatherResponse){
-        viewModelScope.launch(Dispatchers.IO) {
+    fun insertWeatherResponse(cityName: String){
 
+
+        viewModelScope.launch(Dispatchers.IO) {
+            val weatherCreate = weatherRepo.createWeatherResponse(cityName)
+            weatherRepo.insertWeatherResponse(weatherCreate)
         }
     }
 

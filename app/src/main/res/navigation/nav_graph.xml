@@ -30,10 +30,13 @@
         <action
             android:id="@+id/action_blankFragment_to_weatherFragment"
             app:destination="@id/weatherFragment" />
+        <argument
+            android:name="cityName"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/weatherClickFragment"
-        android:name="com.example.day16.view.weatherClickFragment"
+        android:name="com.example.day16.view.WeatherClickFragment"
         android:label="fragment_weather_click"
         tools:layout="@layout/fragment_weather_click" >
         <action

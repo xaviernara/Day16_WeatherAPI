@@ -27,7 +27,7 @@ class Converters {
     //Converter for Wind object to String
     //DONT NEED type variable WHEN CONVERTING A CUSTOM OBJECT TO STRING
     @TypeConverter
-    fun cloudToString(clouds: Clouds): String{
+    fun cloudsToString(clouds: Clouds): String{
         val adapter = Moshi.Builder().build().adapter<Clouds>(Clouds::class.java)
         return adapter.toJson(clouds)
     }
@@ -140,7 +140,7 @@ class Converters {
     //Converter for String to list
     //ONLY NEED type variable WHEN CONVERTING A LIST<>
     @TypeConverter
-    fun stringToPhoneList(jsonString: String): List<String>? {
+    fun stringToList(jsonString: String): List<String>? {
         val type = Types.newParameterizedType(List::class.java,String::class.java)
         val adapter = Moshi.Builder().build().adapter<List<String>>(type)
         return adapter.fromJson(jsonString)?:listOf()

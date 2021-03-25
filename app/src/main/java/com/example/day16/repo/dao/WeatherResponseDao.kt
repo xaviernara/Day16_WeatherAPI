@@ -18,5 +18,5 @@ interface WeatherResponseDao {
     fun getAllWeatherResponses() :Flow<List<WeatherResponse>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertWeatherResponse(response: WeatherResponse)
+    suspend fun insertWeatherResponse(response: WeatherResponse)
 }

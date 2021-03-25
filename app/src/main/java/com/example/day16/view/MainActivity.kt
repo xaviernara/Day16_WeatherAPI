@@ -12,8 +12,25 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //binding = ActivityMainBinding.inflate(inflater, R.layout.activity_main)
         setContentView(binding.root)
 
-        binding.toolbar.visibility = View.GONE
+
     }
+
+
+    companion object {
+
+        private lateinit var binding : ActivityMainBinding
+
+        fun setToolbar(cityName : String, isVisible : Boolean){
+
+            if(isVisible) binding.toolbar.visibility = View.VISIBLE
+            binding.toolbar.visibility = View.INVISIBLE
+
+            binding.cityNameText.text = cityName
+        }
+    }
+
+
 }
