@@ -6,12 +6,6 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-@Entity(
-/*foreignKeys = [ForeignKey(
-entity =  WeatherResponse::class,
-parentColumns = ["id"],
-childColumns = [])*/)
-
 
 data class Coord(
     @field:Json(name="lat")

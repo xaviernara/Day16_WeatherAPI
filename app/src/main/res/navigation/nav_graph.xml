@@ -10,9 +10,6 @@
         android:name="com.example.day16.view.WeatherFragment"
         android:label="fragment_weather"
         tools:layout="@layout/fragment_weather" >
-        <argument
-            android:name="weatherResponse"
-            app:argType="com.example.day16.model.WeatherResponse" />
         <action
             android:id="@+id/action_weatherFragment_to_blankFragment"
             app:destination="@id/blankFragment" />

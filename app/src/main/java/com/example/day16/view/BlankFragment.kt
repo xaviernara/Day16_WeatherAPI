@@ -61,9 +61,8 @@ class BlankFragment : Fragment(),View.OnClickListener {
     override fun onClick(v: View?) {
         when(view?.id){
             R.id.button -> {
-                viewModel.createWeatherResponse(binding.editTextTextPersonName.toString())
-                //val actions = BlankFragmentDirections.actionBlankFragmentToWeatherFragment(binding.editTextTextPersonName.toString())
-                val actions = BlankFragmentDirections.actionBlankFragmentToWeatherFragment(null,binding.editTextTextPersonName.toString())
+                //viewModel.createWeatherResponse(binding.editTextTextPersonName.toString())
+                val actions = BlankFragmentDirections.actionBlankFragmentToWeatherFragment(binding.editTextTextPersonName.toString())
                 findNavController().navigate(actions)
             }
         }

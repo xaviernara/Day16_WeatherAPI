@@ -7,6 +7,7 @@ import com.example.day16.model.WeatherResponse
 import com.example.day16.repo.dao.WeatherResponseDao
 
 @Database(entities = [WeatherResponse::class], version = 1)
+@TypeConverters(Converters::class)
 abstract class WeatherDB : RoomDatabase() {
     /**
      * Creates the open helper to access the database. Generated class already implements this

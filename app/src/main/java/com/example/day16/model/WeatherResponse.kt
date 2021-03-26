@@ -2,8 +2,10 @@ package com.example.day16.model
 
 import android.os.Parcelable
 import androidx.room.*
+import com.example.day16.repo.local.Converters
 import com.squareup.moshi.JsonClass
 import kotlinx.android.parcel.Parcelize
+import kotlinx.android.parcel.RawValue
 
 @JsonClass(generateAdapter = true)
 
@@ -20,31 +22,33 @@ data class WeatherResponse (
 
     //@ColumnInfo(name ="clouds")
     //@Ignore
-    val clouds: Clouds,
+
+
+    val clouds: @RawValue Clouds,
 
     //@ColumnInfo(name ="cod")
     val cod: Int, // 200
 
     //@ColumnInfo(name ="coord")
-    val coord: Coord,//0
+    val coord: @RawValue Coord,//0
 
     //@ColumnInfo(name ="dt")
     val dt: Int, // 1613580189
 
-   // @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = true)
     //@ColumnInfo(name = "id")
     val id: Int, // 4920607
 
     //@ColumnInfo(name ="main")
     //@Ignore
-    val main: Main,
+    val main: @RawValue Main,
 
     @ColumnInfo(name ="name")
     val name: String, // Gary
 
     //@ColumnInfo(name ="sys")
     //@Ignore
-    val sys: Sys,
+    val sys: @RawValue Sys,
 
     //@ColumnInfo(name ="timezone")
     val timezone: Int, // -21600
@@ -54,12 +58,13 @@ data class WeatherResponse (
 
     //@ColumnInfo(name ="weather")
     //@Ignore
-    val weather: List<Weather>,
+    val weather: @RawValue List<Weather>,
 
     //@ColumnInfo(name ="wind")
-    val wind: Wind,
+    val wind: @RawValue Wind,
 
-    val rain : Rain
+    @TypeConverters(Converters::class)
+    val rain : @RawValue Rain
 
 
     /*@Ignore val current : WeatherResponse = WeatherResponse(

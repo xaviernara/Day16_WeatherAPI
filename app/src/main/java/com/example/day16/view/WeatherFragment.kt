@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
@@ -23,7 +24,7 @@ import kotlin.random.nextInt
 class WeatherFragment : Fragment(), WeatherClickListener {
 
     private lateinit var binding: FragmentWeatherBinding
-    private lateinit var viewModel: MainViewModel
+    private val viewModel by viewModels<MainViewModel>()
     private val args : WeatherFragmentArgs by navArgs()
 
 
@@ -32,12 +33,12 @@ class WeatherFragment : Fragment(), WeatherClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        //viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
         //val mainActivity : MainActivity
 
         initObservers()
-        MainActivity.setToolbar(args.weatherResponse.name,true)
+        MainActivity.setToolbar(args.cityName,true)
 
 
 
@@ -54,7 +55,7 @@ class WeatherFragment : Fragment(), WeatherClickListener {
 
 
         //viewModel.createWeatherResponse(args.cityName)
-        viewModel.insertWeatherResponse(args.cityName)
+        viewModel.insertAndCreateWeatherResponse(args.cityName)
         viewModel.getAllWeatherResponses()
 
         viewModel.weatherResponseListLiveData.observe(viewLifecycleOwner, Observer {

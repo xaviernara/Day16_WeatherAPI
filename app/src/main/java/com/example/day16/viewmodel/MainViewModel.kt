@@ -81,7 +81,8 @@ class MainViewModel @Inject constructor(private val weatherRepo: WeatherRepo, ap
 
     }
 
-    fun insertWeatherResponse(cityName: String){
+
+    fun insertAndCreateWeatherResponse(cityName: String){
 
 
         viewModelScope.launch(Dispatchers.IO) {
